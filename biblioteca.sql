@@ -25,10 +25,10 @@ CREATE DATABASE biblioteca;
 
 CREATE TABLE socios(
     rut INT,
-    nombre VARCHAR(20),
-    apellido VARCHAR(20),
-    direccion VARCHAR(20),
-    telefono VARCHAR(20),
+    nombre VARCHAR(20) NOT NULL,
+    apellido VARCHAR(20) NOT NULL,
+    direccion VARCHAR(20) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
     PRIMARY KEY (rut)
 );
 CREATE TABLE libros(
@@ -38,19 +38,17 @@ CREATE TABLE libros(
     cod_autor INT,
     nombre_autor VARCHAR(20),
     apellido_autor VARCHAR(20),
-    nacimiento_muerte VARCHAR(20),
+    nacimiento_muerte INT,
     tipo_autor VARCHAR(20),
     dias_de_prestamo INT,
-    PRIMARY KEY (isbn),
-    FOREIGN KEY (socio_id) REFERENCES socios (rut)
+    PRIMARY KEY (isbn)
 );
-CREATE TABLE historial de prestamos(
-    socio_id INT,
-    libro_id INT,
+CREATE TABLE prestamos(
+    socio VARCHAR(20) REFERENCES socios (rut),
+    libro VARCHAR(20) REFERENCES libros (isbn),
     fecha_prestamo DATE,
     fecha_devolucion DATE,
-    FOREIGN KEY (socio_id) REFERENCES socios (rut),
-    FOREIGN KEY (libro_id) REFERENCES libros (libro_id)
+    PRIMARY KEY (socio, libro)
 );
 --2. Se deben insertar los registros en las tablas correspondientes (1 punto).
 
@@ -68,7 +66,7 @@ VALUES (111-1111111-111,'CUENTOS DE TERROR','344','3','JOSE','SALGADO','1968-202
 (333-3333333-333,'HISTORIA DE ASIA','511','2','SERGIO','MARDONES','1950-2012','PRINCIPAL','14'),
 (444-4444444-444,'MANUAL DE MECÁNICA','298','5','MARTIN','PORTA','1976-','PRINCIPAL','14');
 
-INSERT INTO historial de prestamos ()
+INSERT INTO prestamos ()
 
 
 
