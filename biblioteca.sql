@@ -24,7 +24,7 @@
 CREATE DATABASE biblioteca;
 
 CREATE TABLE socios(
-    rut INT,
+    rut VARCHAR(9),
     nombre VARCHAR(20) NOT NULL,
     apellido VARCHAR(20) NOT NULL,
     direccion VARCHAR(20) NOT NULL,
@@ -32,15 +32,15 @@ CREATE TABLE socios(
     PRIMARY KEY (rut)
 );
 CREATE TABLE libros(
-    isbn INT,
+    isbn VARCHAR(15),
     titulo VARCHAR(20),
     pag VARCHAR(20),
-    cod_autor INT,
+    cod_autor VARCHAR(8),
     nombre_autor VARCHAR(20),
     apellido_autor VARCHAR(20),
-    nacimiento_muerte INT,
+    nacimiento_muerte VARCHAR(10),
     tipo_autor VARCHAR(20),
-    dias_de_prestamo INT,
+    dias_de_prestamo VARCHAR(5),
     PRIMARY KEY (isbn)
 );
 CREATE TABLE prestamos(
