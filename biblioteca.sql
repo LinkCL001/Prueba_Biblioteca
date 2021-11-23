@@ -61,17 +61,17 @@ CREATE TABLE libros_autores(
 --2. Se deben insertar los registros en las tablas correspondientes (1 punto).
 
 INSERT INTO socios (rut, nombre, apellido, direccion, telefono)
-VALUES (1111111-1, 'JUAN','SOTO','AVENIDA 1, SANTIAGO', '911111111'),
-(2222222-2, 'ANA','PÉREZ','PASAJE 2, SANTIAGO', '922222222'),
-(3333333-3, 'SANDRA','AGUILAR','AVENIDA 2, SANTIAGO', '933333333'),
-(4444444-4, 'ESTEBAN','JEREZ','AVENIDA 3, SANTIAGO', '944444444'),
-(5555555-5, 'SILVANA','MUÑOZ','PASAJE 3, SANTIAGO', '955555555');
+VALUES ('1111111-1', 'JUAN','SOTO','AVENIDA 1, SANTIAGO', '911111111'),
+('2222222-2', 'ANA','PÉREZ','PASAJE 2, SANTIAGO', '922222222'),
+('3333333-3', 'SANDRA','AGUILAR','AVENIDA 2, SANTIAGO', '933333333'),
+('4444444-4', 'ESTEBAN','JEREZ','AVENIDA 3, SANTIAGO', '944444444'),
+('5555555-5', 'SILVANA','MUÑOZ','PASAJE 3, SANTIAGO', '955555555');
 
 INSERT INTO libros (isbn, titulo, pag, dias_de_prestamo)
-VALUES (111-1111111-111,'CUENTOS DE TERROR', 344,'7'),
-(222-2222222-222,'POESÍAS CONTEMPORANEAS', 167,'7'),
-(333-3333333-333,'HISTORIA DE ASIA', 511,'14'),
-(444-4444444-444,'MANUAL DE MECÁNICA', 298,'14');
+VALUES ('111-1111111-111','CUENTOS DE TERROR', 344,'7'),
+('222-2222222-222','POESÍAS CONTEMPORANEAS', 167,'7'),
+('333-3333333-333','HISTORIA DE ASIA', 511,'14'),
+('444-4444444-444','MANUAL DE MECÁNICA', 298,'14');
 
 INSERT INTO autores(cod_autor, nombre_autor, apellido_autor, nacimiento, muerte, tipo_autor)
 VALUES(3 ,'JOSE','SALGADO','1968','2020','PRINCIPAL'),
@@ -81,17 +81,17 @@ VALUES(3 ,'JOSE','SALGADO','1968','2020','PRINCIPAL'),
 (5 ,'MARTIN','PORTA','1976', NULL, 'PRINCIPAL');
 
 INSERT INTO libros_autores(cod_autor, isbn)
-VALUES(3, 111-1111111-111),
-(4, 111-1111111-111);
+VALUES(3, '111-1111111-111'),
+(4, '111-1111111-111');
 
 INSERT INTO prestamos (socio, libro, fecha_prestamo, fecha_devolucion)
-VALUES (1111111-1, 111-1111111-111, '20-01-2020','27-01-2020'),
-(5555555-5, 222-2222222-222, '20-01-2020','30-01-2020'),
-(3333333-3, 333-3333333-333, '22-01-2020','30-01-2020'),
-(4444444-4, 222-2222222-222, '23-01-2020','30-01-2020'),
-(2222222-2, 222-2222222-222, '27-01-2020','04-02-2020'),
-(1111111-1, 444-4444444-444, '31-01-2020','12-02-2020'),
-(3333333-3, 222-2222222-222, '31-01-2020','12-02-2020');
+VALUES ('1111111-1', '111-1111111-111', '20-01-2020','27-01-2020'),
+('5555555-5', '222-2222222-222', '20-01-2020','30-01-2020'),
+('3333333-3', '333-3333333-333', '22-01-2020','30-01-2020'),
+('4444444-4', '222-2222222-222', '23-01-2020','30-01-2020'),
+('2222222-2', '222-2222222-222', '27-01-2020','04-02-2020'),
+('1111111-1', '444-4444444-444', '31-01-2020','12-02-2020'),
+('3333333-3', '222-2222222-222', '31-01-2020','12-02-2020');
 
 --3. Realizar las siguientes consultas:
 --a. Mostrar todos los libros que posean menos de 300 páginas. (0.5 puntos)
@@ -104,6 +104,6 @@ SELECT * FROM autores WHERE nacimiento >= '1970';
 
 --c. ¿Cuál es el libro más solicitado? (0.5 puntos).
 
-SELECT libro FROM prestamos GROUP BY libro ORDER BY solicitado DESC LIMIT 1;
+SELECT libro,COUNT(libro) AS solicitado FROM prestamos GROUP BY libro ORDER BY solicitado DESC LIMIT 1;
 
 --d. Si se cobrara una multa de $100 por cada día de atraso, mostrar cuánto debería pagar cada usuario que entregue el préstamo después de 7 días. (0.5 puntos)
